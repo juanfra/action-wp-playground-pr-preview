@@ -29238,7 +29238,6 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const template = {
         preferredVersions: {
-            php: '8.0',
             wp: 'nightly',
         },
         steps: [
@@ -29263,10 +29262,9 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
                     resource: 'url',
                     url: buildProxyURL(repo, branch, themeDir),
                 },
-            },
-            {
-                step: 'activateTheme',
-                themeFolderName,
+                options: {
+                    activate: true,
+                },
             },
         ],
     };

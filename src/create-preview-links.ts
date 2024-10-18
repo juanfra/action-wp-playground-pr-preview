@@ -27,7 +27,7 @@ interface Step {
 }
 
 interface Template {
-	preferredVersions: {
+	preferredVersions?: {
 		php?: string;
 		wp?: string;
 	};
@@ -76,9 +76,9 @@ function createBlueprint(
 		? `${themeSlug}-${sanitizedBranch}`
 		: themeSlug;
 	debug(`Theme folder name: ${themeFolderName}`);
+
 	const template: Template = {
 		preferredVersions: {
-			php: '8.0',
 			wp: 'nightly',
 		},
 		steps: [
@@ -103,10 +103,9 @@ function createBlueprint(
 					resource: 'url',
 					url: buildProxyURL(repo, branch, themeDir),
 				},
-			},
-			{
-				step: 'activateTheme',
-				themeFolderName,
+				options: {
+					activate: true,
+				},
 			},
 		],
 	};
