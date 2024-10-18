@@ -67,7 +67,7 @@ function createBlueprint(
 	/* If themeDir is not provided, we assume that the action is running in a single theme workflow and the theme folder name will be the theme slug + the branch name.
 	 * If themeDir is provided, we assume that the action is running in a multi theme workflow and the theme folder name will be the theme slug.
 	 */
-	const themeFolderName = !themeDir ? `${themeSlug}/${branch}` : themeSlug;
+	const themeFolderName = !themeDir ? `${themeSlug}-${branch}` : themeSlug;
 	debug(`Theme folder name: ${themeFolderName}`);
 	const template: Template = {
 		steps: [
@@ -156,6 +156,7 @@ export default async function createPreviewLinksComment(
 			themeSlug,
 			pullRequest.head.ref,
 			repo,
+			themeDir,
 		)})`;
 	} else {
 		debug(`Changed themes: ${changedThemes}`);
