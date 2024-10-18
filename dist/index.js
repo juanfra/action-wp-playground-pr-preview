@@ -29242,7 +29242,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
             },
             {
                 step: 'installPlugin',
-                pluginZipFile: {
+                pluginData: {
                     resource: 'wordpress.org/plugins',
                     slug: 'theme-check',
                 },
@@ -29252,7 +29252,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
             },
             {
                 step: 'installTheme',
-                themeZipFile: {
+                themeData: {
                     resource: 'url',
                     url: buildProxyURL(repo, branch, themeDir),
                 },
