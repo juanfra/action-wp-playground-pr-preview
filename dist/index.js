@@ -29231,7 +29231,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     /* If themeDir is not provided, we assume that the action is running in a single theme workflow and the theme folder name will be the theme slug + the branch name.
      * If themeDir is provided, we assume that the action is running in a multi theme workflow and the theme folder name will be the theme slug.
      */
-    const themeFolderName = themeSlug;
+    const themeFolderName = !themeDir ? `${themeSlug}-${branch}` : themeSlug;
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const template = {
         steps: [
@@ -29254,7 +29254,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
                 step: 'installTheme',
                 themeData: {
                     resource: 'url',
-                    url: buildProxyURL(repo, branch, themeDir),
+                    url: buildProxyURL(repo, branch, themeFolderName),
                 },
                 options: {
                     activate: true,
