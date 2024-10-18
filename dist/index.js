@@ -29231,7 +29231,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     /* If themeDir is not provided, we assume that the action is running in a single theme workflow and the theme folder name will be the theme slug + the branch name.
      * If themeDir is provided, we assume that the action is running in a multi theme workflow and the theme folder name will be the theme slug.
      */
-    const themeFolderName = !themeDir ? `${themeSlug}-${branch}` : themeSlug;
+    const themeFolderName = !themeDir ? `${themeSlug}/${branch}` : themeSlug;
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const template = {
         steps: [
@@ -29333,7 +29333,9 @@ ${themesMessage}You can preview these changes by following the ${isSingleTheme ?
 ${previewLinks}
 
 I will update this comment with the latest preview links as you push more changes to this PR.
+
 ---
+
 **⚠️ Note:** The preview sites are created using [WordPress Playground](https://wordpress.org/playground/). You can add content, edit settings, and test the themes as you would on a real site, but please note that changes are not saved between sessions.
 ${includesChildThemes
         ? '\n**⚠️ Note:** Child themes are dependent on their parent themes. You will have to install the parent theme as well for the preview to work correctly.'
