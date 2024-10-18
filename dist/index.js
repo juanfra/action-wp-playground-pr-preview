@@ -29304,7 +29304,7 @@ async function createPreviewLinksComment(github, context, changedThemes) {
         (0, core_1.debug)(`Theme dir: ${(0, core_1.getInput)('theme-dir')}`);
         const themeDir = (0, core_1.getInput)('theme-dir');
         const themeSlug = getThemeSlugFromStylesheet(themeDir);
-        previewLinks = `- [Preview changes for **${themeSlug}**](https://playground.wordpress.net/#${createBlueprint(themeSlug, pullRequest.head.ref, repo, themeSlug)})`;
+        previewLinks = `- [Preview changes for **${themeSlug}**](https://playground.wordpress.net/#${createBlueprint(themeSlug, pullRequest.head.ref, repo)})`;
     }
     else {
         (0, core_1.debug)(`Changed themes: ${changedThemes}`);
