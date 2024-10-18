@@ -92,9 +92,10 @@ function createBlueprint(
 					resource: 'url',
 					url: buildProxyURL(repo, branch, themeDir),
 				},
-				options: {
-					activate: true,
-				},
+			},
+			{
+				step: 'activateTheme',
+				themeFolderName,
 			},
 		],
 	};
