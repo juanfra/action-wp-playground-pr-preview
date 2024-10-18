@@ -79,7 +79,8 @@ function createBlueprint(
 
 	const template: Template = {
 		preferredVersions: {
-			wp: 'nightly',
+			wp: getInput('wp-version'),
+			php: getInput('php-version'),
 		},
 		steps: [
 			{
