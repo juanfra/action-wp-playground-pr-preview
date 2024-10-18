@@ -156,7 +156,6 @@ export default async function createPreviewLinksComment(
 			themeSlug,
 			pullRequest.head.ref,
 			repo,
-			themeDir,
 		)})`;
 	} else {
 		debug(`Changed themes: ${changedThemes}`);
