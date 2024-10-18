@@ -29238,15 +29238,10 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const wpVersion = (0, core_1.getInput)('wp-version');
     const phpVersion = (0, core_1.getInput)('php-version');
-    const preferredVersions = {};
-    if (wpVersion) {
-        (0, core_1.debug)(`WordPress version: ${wpVersion}`);
-        preferredVersions.wp = wpVersion;
-    }
-    if (phpVersion) {
-        (0, core_1.debug)(`PHP version: ${phpVersion}`);
-        preferredVersions.php = phpVersion;
-    }
+    const preferredVersions = {
+        ...(wpVersion && { wp: wpVersion }),
+        ...(phpVersion && { php: phpVersion }),
+    };
     const template = {
         preferredVersions,
         steps: [

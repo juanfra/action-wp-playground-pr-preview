@@ -80,17 +80,10 @@ function createBlueprint(
 	const wpVersion = getInput('wp-version');
 	const phpVersion = getInput('php-version');
 
-	const preferredVersions: { wp?: string; php?: string } = {};
-
-	if (wpVersion) {
-		debug(`WordPress version: ${wpVersion}`);
-		preferredVersions.wp = wpVersion;
-	}
-
-	if (phpVersion) {
-		debug(`PHP version: ${phpVersion}`);
-		preferredVersions.php = phpVersion;
-	}
+	const preferredVersions = {
+		...(wpVersion && { wp: wpVersion }),
+		...(phpVersion && { php: phpVersion }),
+	};
 
 	const template: Template = {
 		preferredVersions,
