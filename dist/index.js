@@ -29254,7 +29254,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
                 step: 'installTheme',
                 themeData: {
                     resource: 'url',
-                    url: buildProxyURL(repo, branch, themeFolderName),
+                    url: buildProxyURL(repo, branch, themeDir),
                 },
                 options: {
                     activate: true,
