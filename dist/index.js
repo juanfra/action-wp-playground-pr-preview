@@ -29236,11 +29236,19 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
         ? `${themeSlug}-${sanitizedBranch}`
         : themeSlug;
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
+    const wpVersion = (0, core_1.getInput)('wp-version');
+    const phpVersion = (0, core_1.getInput)('php-version');
+    const preferredVersions = {};
+    if (wpVersion) {
+        (0, core_1.debug)(`WordPress version: ${wpVersion}`);
+        preferredVersions.wp = wpVersion;
+    }
+    if (phpVersion) {
+        (0, core_1.debug)(`PHP version: ${phpVersion}`);
+        preferredVersions.php = phpVersion;
+    }
     const template = {
-        preferredVersions: {
-            wp: (0, core_1.getInput)('wp-version'),
-            php: (0, core_1.getInput)('php-version'),
-        },
+        preferredVersions,
         steps: [
             {
                 step: 'login',

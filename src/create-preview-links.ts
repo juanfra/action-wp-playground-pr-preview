@@ -77,11 +77,23 @@ function createBlueprint(
 		: themeSlug;
 	debug(`Theme folder name: ${themeFolderName}`);
 
+	const wpVersion = getInput('wp-version');
+	const phpVersion = getInput('php-version');
+
+	const preferredVersions: { wp?: string; php?: string } = {};
+
+	if (wpVersion) {
+		debug(`WordPress version: ${wpVersion}`);
+		preferredVersions.wp = wpVersion;
+	}
+
+	if (phpVersion) {
+		debug(`PHP version: ${phpVersion}`);
+		preferredVersions.php = phpVersion;
+	}
+
 	const template: Template = {
-		preferredVersions: {
-			wp: getInput('wp-version'),
-			php: getInput('php-version'),
-		},
+		preferredVersions,
 		steps: [
 			{
 				step: 'login',
