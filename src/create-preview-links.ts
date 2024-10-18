@@ -27,6 +27,10 @@ interface Step {
 }
 
 interface Template {
+	preferredVersions: {
+		php?: string;
+		wp?: string;
+	};
 	steps: Step[];
 }
 
@@ -70,6 +74,10 @@ function createBlueprint(
 	const themeFolderName = !themeDir ? `${themeSlug}-${branch}` : themeSlug;
 	debug(`Theme folder name: ${themeFolderName}`);
 	const template: Template = {
+		preferredVersions: {
+			php: '8.0',
+			wp: 'nightly',
+		},
 		steps: [
 			{
 				step: 'login',

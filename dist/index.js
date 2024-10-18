@@ -29234,6 +29234,10 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     const themeFolderName = !themeDir ? `${themeSlug}-${branch}` : themeSlug;
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const template = {
+        preferredVersions: {
+            php: '8.0',
+            wp: 'nightly',
+        },
         steps: [
             {
                 step: 'login',
