@@ -120,7 +120,8 @@ I will update this comment with the latest preview links as you push more change
 
 ---
 
-**⚠️ Note:** The preview sites are created using [WordPress Playground](https://wordpress.org/playground/). You can add content, edit settings, and test the themes as you would on a real site, but please note that changes are not saved between sessions.
+> [!NOTE]
+> The preview sites are created using [WordPress Playground](https://wordpress.org/playground/). You can add content, edit settings, and test the themes as you would on a real site, but please note that changes are not saved between sessions.
 `;
 
 		expect(mockGithub.rest.issues.createComment).toHaveBeenCalledWith({
