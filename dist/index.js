@@ -29256,9 +29256,6 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
                     resource: 'url',
                     url: buildProxyURL(repo, branch, themeDir),
                 },
-                options: {
-                    activate: true,
-                },
             },
         ],
     };
