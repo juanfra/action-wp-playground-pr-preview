@@ -29231,7 +29231,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     /* If themeDir is not provided, we assume that the action is running in a single theme workflow and the theme folder name will be the theme slug + the branch name.
      * If themeDir is provided, we assume that the action is running in a multi theme workflow and the theme folder name will be the theme slug.
      */
-    const themeFolderName = !themeDir ? `${themeSlug}/${branch}` : themeSlug;
+    const themeFolderName = !themeDir ? `${themeSlug}-${branch}` : themeSlug;
     (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const template = {
         steps: [
@@ -29304,7 +29304,7 @@ async function createPreviewLinksComment(github, context, changedThemes) {
         (0, core_1.debug)(`Theme dir: ${(0, core_1.getInput)('theme-dir')}`);
         const themeDir = (0, core_1.getInput)('theme-dir');
         const themeSlug = getThemeSlugFromStylesheet(themeDir);
-        previewLinks = `- [Preview changes for **${themeSlug}**](https://playground.wordpress.net/#${createBlueprint(themeSlug, pullRequest.head.ref, repo)})`;
+        previewLinks = `- [Preview changes for **${themeSlug}**](https://playground.wordpress.net/#${createBlueprint(themeSlug, pullRequest.head.ref, repo, themeDir)})`;
     }
     else {
         (0, core_1.debug)(`Changed themes: ${changedThemes}`);
