@@ -71,7 +71,7 @@ function createBlueprint(
 	/* If themeDir is not provided, we assume that the action is running in a single theme workflow and the theme folder name will be the theme slug + the branch name.
 	 * If themeDir is provided, we assume that the action is running in a multi theme workflow and the theme folder name will be the theme slug.
 	 */
-	const sanitizedBranch = branch.replace(/\//g, '-');
+	const sanitizedBranch = branch.replace(/[\/\\:*?"<>|]/g, '-');
 	const themeFolderName = !themeDir
 		? `${themeSlug}-${sanitizedBranch}`
 		: themeSlug;
