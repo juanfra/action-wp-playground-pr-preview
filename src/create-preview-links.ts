@@ -93,9 +93,9 @@ function createBlueprint(
 					url: buildProxyURL(repo, branch, themeDir),
 				},
 				options: {
-					activate: true
-				}
-			}
+					activate: true,
+				},
+			},
 		],
 	};
 
