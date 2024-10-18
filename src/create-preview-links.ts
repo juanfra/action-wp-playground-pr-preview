@@ -82,7 +82,7 @@ function createBlueprint(
 
 	const preferredVersions = {
 		...(wpVersion && { wp: wpVersion }),
-		...(phpVersion && { php: phpVersion }),
+		...(phpVersion && { php: Number(phpVersion).toFixed(1) }),
 	};
 
 	const template: Template = {

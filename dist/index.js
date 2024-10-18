@@ -29240,7 +29240,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     const phpVersion = (0, core_1.getInput)('php-version');
     const preferredVersions = {
         ...(wpVersion && { wp: wpVersion }),
-        ...(phpVersion && { php: phpVersion }),
+        ...(phpVersion && { php: Number(phpVersion).toFixed(1) }),
     };
     const template = {
         preferredVersions,
