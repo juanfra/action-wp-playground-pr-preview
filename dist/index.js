@@ -29303,7 +29303,10 @@ async function createPreviewLinksComment(github, context, changedThemes) {
         throw new Error('No pull request found in context payload');
     }
     (0, core_1.debug)(`Pull request found: #${pullRequest.number}`);
-    const repo = `${context.repo.owner}/${context.repo.repo}`;
+    const isFork = pullRequest.head.repo?.fork;
+    const repo = isFork
+        ? `${pullRequest.head.repo.owner.login}/${pullRequest.head.repo.name}`
+        : `${context.repo.owner}/${context.repo.repo}`;
     const isSingleTheme = (0, core_1.getInput)('single-theme') === 'true';
     let previewLinks = '';
     if (isSingleTheme) {
@@ -29338,6 +29341,10 @@ async function createPreviewLinksComment(github, context, changedThemes) {
 Repo: ${repo}
 
 Context ${JSON.stringify(context)}
+
+IsFork: ${isFork}
+
+Repo: ${pullRequest.head.repo?.full_name}
 
 Pull request ${JSON.stringify(pullRequest)}
 
