@@ -204,6 +204,11 @@ export default async function createPreviewLinksComment(
 		: '';
 
 	const comment = `
+
+Repo: ${repo}
+
+Context ${context.payload?.repository?.full_name}
+
 ${themesMessage}You can preview these changes by following the ${isSingleTheme ? 'link' : 'links'} below:
 
 ${previewLinks}
