@@ -207,7 +207,9 @@ export default async function createPreviewLinksComment(
 
 Repo: ${repo}
 
-Context ${context.payload?.repository?.full_name}
+Context ${JSON.stringify(context)}
+
+Pull request ${JSON.stringify(pullRequest)}
 
 ${themesMessage}You can preview these changes by following the ${isSingleTheme ? 'link' : 'links'} below:
 
