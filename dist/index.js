@@ -29340,13 +29340,9 @@ async function createPreviewLinksComment(github, context, changedThemes) {
 
 Repo: ${repo}
 
-Context ${JSON.stringify(context)}
-
 IsFork: ${isFork}
 
 Repo: ${pullRequest.head.repo?.full_name}
-
-Pull request ${JSON.stringify(pullRequest)}
 
 ${themesMessage}You can preview these changes by following the ${isSingleTheme ? 'link' : 'links'} below:
 
