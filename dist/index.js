@@ -29231,11 +29231,6 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
     /* If themeDir is not provided, we assume that the action is running in a single theme workflow and the theme folder name will be the theme slug + the branch name.
      * If themeDir is provided, we assume that the action is running in a multi theme workflow and the theme folder name will be the theme slug.
      */
-    const sanitizedBranch = branch.replace(/[\/\\:*?"<>|]/g, '-');
-    const themeFolderName = !themeDir
-        ? `${themeSlug}-${sanitizedBranch}`
-        : themeSlug;
-    (0, core_1.debug)(`Theme folder name: ${themeFolderName}`);
     const wpVersion = (0, core_1.getInput)('wp-version');
     const phpVersion = (0, core_1.getInput)('php-version');
     const preferredVersions = {
@@ -29243,6 +29238,7 @@ function createBlueprint(themeSlug, branch, repo, themeDir) {
         ...(phpVersion && { php: Number(phpVersion).toFixed(1) }),
     };
     const template = {
+        ...(Object.keys(preferredVersions).length && { preferredVersions }),
         preferredVersions,
         steps: [
             {
@@ -29338,6 +29334,11 @@ async function createPreviewLinksComment(github, context, changedThemes) {
 	`
         : '';
     const comment = `
+
+Repo: ${repo}
+
+Context ${context.payload?.repository?.full_name}
+
 ${themesMessage}You can preview these changes by following the ${isSingleTheme ? 'link' : 'links'} below:
 
 ${previewLinks}
